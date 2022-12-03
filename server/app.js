@@ -1,14 +1,25 @@
-const express = require("express")
-const app = express()
-const mongoose = require("mongoose")
-const bodyParser = require("body-parser")
+const express = require("express");
+const app = express();
+const cors = require('cors')
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
-const tweetRoute = require("./routes/tweets")
+const tweetRoute = require("./routes/tweets");
 
-app.use("/tweet", tweetRoute)
+const corsOpts = {
+  origin: "*",
 
-mongoose.connect("mongodb://localhost:27017/twitter-clone")
+  methods: ["GET", "POST"],
 
-app.listen(8080)
+  allowedHeaders: ["Content-Type"],
+};
+
+app.use(cors(corsOpts));
+
+app.use("/tweet", tweetRoute);
+
+mongoose.connect("mongodb://localhost:27017/twitter-clone");
+
+app.listen(8080);
