@@ -15,7 +15,7 @@ import User from "./User";
 
 export default function Sidebar() {
   return (
-    <div className="w-275 flex items-start flex-col justify-between h-screen text-white mt-6">
+    <div className="w-275 flex items-start flex-col justify-between h-screen text-white mt-6 border-r-2 border-gray-600">
       <div>
         <div className="pl-5">
           <Logo className="w-8 fill-white" />
